@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./Signup.css";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -32,34 +34,39 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <h2>Please register Yourself!!</h2>
+    <div className="signup-container">
+      <h2>Create an Account</h2>
       <input
         type="text"
-        placeholder="Enter Your Name..."
+        className="signup-input"
+        placeholder="Full Name"
         value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
-        type="text"
-        placeholder="Enter Your Email Id..."
+        type="email"
+        className="signup-input"
+        placeholder="Email Address"
         value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        type="text"
-        placeholder="Enter Your Password..."
+        type="password"
+        className="signup-input"
+        placeholder="Password"
         value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleRegister}>Register!!</button>
-    </>
+      <button className="signup-button" onClick={handleRegister}>
+        Sign Up
+      </button>
+      <p className="signup-login-text">
+        Already have an account?{" "}
+        <Link to="/login" className="login-link">
+          Login here
+        </Link>
+      </p>
+    </div>
   );
 };
 

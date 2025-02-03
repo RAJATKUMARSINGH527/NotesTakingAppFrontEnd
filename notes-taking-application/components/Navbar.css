@@ -1,0 +1,83 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background */
+  color: white;
+  width: 100%;
+  position: fixed; /* Keep it fixed at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Make sure it stays on top of other elements */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better design */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.navbar-brand a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: black; /* Highlight color on hover */
+}
+
+.signup-btn {
+  padding: 8px 15px;
+  background-color:limegreen;
+  color: black;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.signup-btn:hover {
+  background-color: lawngreen;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column; /* Stack items vertically on small screens */
+    background-color: #007bff; /* Same background as navbar */
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    right: 0;
+    width: 100%; /* Full width dropdown */
+    display: none; /* Hide by default */
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex; /* Show links on toggle */
+  }
+
+  .nav-links li {
+    margin: 10px 0; /* Add spacing between vertical links */
+  }
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./CreateNotes.css";
 
 const CreateNotes = () => {
   const [title, setTitle] = useState("");
@@ -10,7 +11,7 @@ const CreateNotes = () => {
         description,
     };
 
-    fetch("https://notestakingappbackend-wx6m.onrender.com/notes", {
+    fetch("https://notestakingappbackend-wx6m.onrender.com/notes/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +22,8 @@ const CreateNotes = () => {
       .then((res) => res.json())
       .then((data) => {
         alert(data.msg);
-        // localStorage.setItem("accessToken", data.token);
-        // console.log(data);
+        localStorage.setItem("accessToken", data.token);
+        console.log(data);
       })
       .catch((error) => console.log(error));
 
@@ -31,7 +32,7 @@ const CreateNotes = () => {
   };
 
   return (
-    <>
+    <div className="CreateNotes">
       <h2>Please go ahead, and create your note</h2>
       <input
         type="text"
@@ -49,7 +50,7 @@ const CreateNotes = () => {
 
       
       <button onClick={handleNotes}>Create Note</button>
-    </>
+    </div>
   );
 };
 
