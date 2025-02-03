@@ -21,7 +21,7 @@ const Signup = () => {
       body: JSON.stringify(payload), // body data type must match "Content-Type" header 
       // because we are sending json data to the server so we need to stringify the data before sending it to the server 
       // payload is the data that we are sending to the server in the form of json
-      //stinrgify is used to convert the json data into string
+      //stingify is used to convert the json data into string
 
     })
       .then((res) => res.json())
