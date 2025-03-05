@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
+import { bcUrl } from "../src/urlStore/bcUlr";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const Signup = () => {
     };
 
     // console.log(payload);
-    fetch("https://notestakingappbackend-wx6m.onrender.com/users", {
+    fetch(`${bcUrl}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

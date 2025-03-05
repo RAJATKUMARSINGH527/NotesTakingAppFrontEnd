@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Dashboard.css";
+import { bcUrl } from "../src/urlStore/bcUlr";
 
 const NotesDashboard = () => {
   const [notes, setNotes] = useState([]);
@@ -9,7 +10,7 @@ const NotesDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://notestakingappbackend-wx6m.onrender.com/notes", {
+    fetch(`${bcUrl}/notes`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -33,7 +34,7 @@ const NotesDashboard = () => {
       return;
     }
 
-    fetch(`https://notestakingappbackend-wx6m.onrender.com/notes/${noteId}`, {
+    fetch(`${bcUrl}/notes/${noteId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +64,7 @@ const NotesDashboard = () => {
   };
 
   const handleDelete = (noteId) => {
-    fetch(`https://notestakingappbackend-wx6m.onrender.com/notes/${noteId}`, {
+    fetch(`${bcUrl}/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./CreateNotes.css";
+import { bcUrl } from "../src/urlStore/bcUlr";
 
 const CreateNotes = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ const CreateNotes = () => {
         description,
     };
 
-    fetch("https://notestakingappbackend-wx6m.onrender.com/notes/", {
+    fetch(`${bcUrl}/notes/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
