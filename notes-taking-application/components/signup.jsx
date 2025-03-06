@@ -72,30 +72,48 @@
 // };
 
 // export { Signup };
-
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
-import { Link } from "react-router-dom";
-import { bcUrl } from "../src/urlStore/bcUlr"; 
+import { bcUrl, bcUrlLocal } from "../src/urlStore/bcUlr";
+
+const BASE_URL = process.env.NODE_ENV === "development" ? bcUrlLocal : bcUrl;
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const validateInputs = () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      alert("Please fill in all fields.");
+      return false;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(name)) {
+      alert("Name must contain only letters and spaces.");
+      return false;
+    }
+    if (!email.includes("@") || !email.includes(".")) {
+      alert("Please enter a valid email.");
+      return false;
+    }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return false;
+    }
+    return true;
+  };
 
   const handleRegister = async () => {
-    if (!name || !email || !password) {
-      alert("Please fill in all fields.");
-      return;
-    }
+    if (!validateInputs()) return;
 
     setIsLoading(true);
     const payload = { name, email, password };
 
     try {
-      const response = await fetch(`${bcUrl}/users`, {
+      const response = await fetch(`${BASE_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -107,7 +125,11 @@ const Signup = () => {
         throw new Error(data.message || "Registration failed");
       }
 
-      alert("Account created successfully!");
+      alert("Account created successfully! Redirecting to login...");
+
+      // ✅ Redirect to Login Page (not Dashboard)
+      navigate("/login", { replace: true });
+
     } catch (error) {
       alert(error.message);
     } finally {
@@ -135,7 +157,7 @@ const Signup = () => {
       <input
         type="password"
         className="signup-input"
-        placeholder="Password"
+        placeholder="Password (min 6 chars)"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />

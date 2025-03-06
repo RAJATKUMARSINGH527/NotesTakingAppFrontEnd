@@ -5,6 +5,7 @@ import { CreateNotes } from "../components/CreateNotes";
 import { NotesDashboard } from "../components/Dashboard";
 import { Home } from "../components/HomePage";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 import "./App.css";
 
@@ -19,12 +20,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/createnotes" element={<CreateNotes />} />
-          <Route path="/dashboard" element={<NotesDashboard />} />
           {/* Protected Routes */}
-          {/* <Route path="/createnotes" element={token ? <CreateNotes /> : <Login />} />
-          <Route path="/dashboard" element={token ? <NotesDashboard /> : <Login />} /> */}
+          <Route path="/createnotes" element={token ? <CreateNotes /> : <Login />} /> 
+          <Route path="/dashboard" element={token ? <NotesDashboard /> : <Login />} /> 
         </Routes>
+        <Footer />
       </main>
     </BrowserRouter>
   );

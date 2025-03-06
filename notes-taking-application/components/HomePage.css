@@ -1,70 +1,170 @@
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .header {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .hero h2 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .hero p {
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .cta-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background: #0056b3;
-  }
-  
-  .notes-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .note-card {
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    font-size: 1rem;
-    color: #333;
-  }
-  
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f7f9;
+}
+
+/* Main Container */
+.main-container {
+  text-align: center;
+  background: white;
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* New Note Button */
+.add-note-btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.add-note-btn svg {
+  margin-right: 8px;
+}
+
+.add-note-btn:hover {
+  background: #0056b3;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.search-bar input {
+  border: none;
+  font-size: 1rem;
+  padding: 8px;
+  outline: none;
+  width: 100%;
+}
+
+/* Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Note Card */
+.note-card {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.note-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Pinned Notes */
+.pinned-notes h3 {
+  margin-top: 40px;
+  font-size: 1.4rem;
+  color: #ffcc00;
+  display: flex;
+  align-items: center;
+}
+
+.pinned-notes h3 svg {
+  margin-right: 8px;
+}
+
+.recent-notes h3 {
+  margin-top: 40px;
+  font-size: 1.4rem;
+  color: #333;
+
+}
+
+/* Categories Section */
+.categories {
+  margin-top: 40px;
+}
+
+.categories h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.category-list {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background: #eee;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.category-card:hover {
+  background: #ddd;
+}
+
+/* No Notes Message */
+.no-notes {
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 20px;
+}
